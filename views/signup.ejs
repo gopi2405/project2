@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+
+<body>
+    <h1>signup</h1>
+    <form method="post" action="/sign_up">
+        <label for="name">Your UserId</label><br>
+        <input type="text" id="name" name="name">
+        <small id="err_n">
+        </small>
+        <small style="color: white; ">
+            <%=msg%>
+        </small>
+        <br>
+        <label for="email">Your email</label><br>
+        <input type="text" id="email" name="email">
+        <small id="err_e">
+        </small>
+        <small style="color: white; size: 0px;">
+            <%=msg %>
+        </small>
+        <br>
+        <label for="Password">Your password</label><br>
+        <input type="password" id="psw" name="psw"> <br>
+        <label for="name">Please conform your password</label><br>
+        <input type="password" id="cpsw" name="cpsw">
+        <small id="psw1">
+        </small>
+        <small style="color: white; size: 0px;">
+            <%=msg %>
+        </small> <br>
+        <button type="submit" id="submit" value="sbt">click</button>
+    </form>
+</body>
+<script>
+    let name = '<%-msg%>';
+    if (name == "name") {
+        document.getElementById('err_n').innerHTML = "name field is blank";
+    } else if (name == "name_email") {
+        document.getElementById('err_n').innerHTML = "name field is blank";
+        document.getElementById('err_e').innerHTML = "mail format not recognized";
+        document.getElementById('psw1').innerHTML = "password does not match ";
+    } else if (name == "email") {
+        document.getElementById('err_e').innerHTML = "mail format not recognized";
+    } else if (name == "psw") {
+        document.getElementById('psw1').innerHTML = "password does not match ";
+    } else if (name == "checkemail") {
+        document.getElementById('err_e').innerHTML = "email id already registed";
+    } else if (name == "checkname") {
+        document.getElementById('err_n').innerHTML = "user id already exist";
+    } else if (name == "checkemailname") {
+        document.getElementById('err_n').innerHTML = "user id already exist";
+        document.getElementById('err_e').innerHTML = "email id already registed";
+    }
+</script>
+
+</html>

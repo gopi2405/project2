@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body style="text-align: center;">
+    <h1>loginform</h1><br>
+    <form method="post" action="/login_api">
+        <p style="color: red;">
+            <%=alert%>
+        </p>
+        <label for="name"> Name or Email</label> <br>
+        <input type="text" id="fnam" name="name" placeholder="Email address or userid ">
+        <br><br>
+        <label for="name">Password</label> <br>
+        <input type="text" id="psw" name="Password" placeholder="Password">
+        <br><br>
+        <button type="submit" id="submit" value="sbt">click</button><br>
+    </form>
+    <P>for signup click <a href="signup"> Signup</a> link</P>
+    <P>for forget click <a href="forget"> forget</a> link</P>
+</body>
+
+</html>

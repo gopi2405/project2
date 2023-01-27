@@ -1,0 +1,88 @@
+let name = '<%-msg%>';
+if (name == "name1") {
+    let heading = document
+        .getElementById('p1');
+    name = "name field is blank" + name;
+    heading.innerText = name;
+} else if (name == "name_email") {
+    let heading1 = document
+        .getElementById('p1');
+    name = "name field is blank" + name;
+    heading1.innerText = name;
+    let heading = document
+        .getElementById('p2');
+    name = "mail format not recognized" + name;
+    heading.innerText = name;
+} else if (name == "email1") {
+    let heading = document
+        .getElementById('p2');
+    name = "mail format not recognized" + name;
+    heading.innerText = name;
+}
+
+// signup program
+if (uname != "") {
+    if (checkEmail.test(email) && email != "") {
+        if (psw == cpsw && psw != "") {
+            global.db_con.query("SELECT * FROM users", function (err, result) {
+                if (result == "") {
+                    var sql = `insert into users (uname, email, psw, cpsw) values ("${uname}","${email}","${psw}","${cpsw}")`;
+                    global.db_con.query(sql, function (err, result) {
+                        if (err) throw err
+                        console.log(result);
+                    })
+                    res.render('login');
+                } else {
+                    for (let i = 0; i < result.length; i++)
+                        if (result[i].uname == uname) {
+                            if (result[i].email == email) {
+                                res.render('signup', { msg: 'checkemailname' })
+                            } else {
+                                res.render('signup', { msg: 'checkname' })
+                            }
+                        } else {
+                            if (result[i].email == email) {
+                                res.render('signup', { msg: 'checkemail' })
+                            } else {
+                                var sql = `insert into users (uname, email, psw, cpsw) values ("${uname}","${email}","${psw}","${cpsw}")`;
+                                global.db_con.query(sql, function (err, result,) {
+                                    if (err) throw err
+                                    console.log(result);
+                                })
+                                res.render('login');
+                            }
+                        }
+                }
+                // if (err) throw err;
+                // console.log(result);
+            });
+        } else {
+            res.render('signup', { msg: 'psw' })
+        }
+
+    } else {
+        res.render('signup', { msg: 'email' })
+    }
+} else if (checkEmail.test(email) && email != "") {
+    if (psw == cpsw && psw != "") {
+        res.render('signup', { msg: 'name' });
+        return true;
+    } else {
+        res.render('signup', { msg: 'name_email' })
+    }
+} else {
+    res.render('signup', { msg: 'name_email' })
+}
+
+
+// foreach loop
+result1.forEach(result => {
+    if (user_email == result.uname && psw == result.psw || user_email == result.email && psw == result.psw) {
+        console.log("login successful");
+        res.render('login', { alert: 'login successful' });
+    } else {
+        res.render('login', { alert: 'login failed' })
+    }
+});
+//  using arr.find() to find needed object
+let user_arr = result.find(user => user.email == user_email); 
