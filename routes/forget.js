@@ -4,15 +4,20 @@ module.exports = (() => {
         var psw = req.body.psw;
         var cpsw = req.body.cpsw;
         global.db_con.query("SELECT * FROM users", function (err, result) {
-            let user_arr = result.find(user => user.email == email);
-            if (user_arr.email == email) {
-                user_arr.psw = psw;
-                user_arr.cpsw = psw;
-                res.send('password changed successfully')
+            arr = result.find(user => user.email == email);
+            if (arr.email == email) {
+                if (psw == cpsw) {
+                    var update = "update users set psw = ?, cpsw = ? where email = ?";
+                    global.db_con.query(update, [psw, cpsw, email]);
+                    let arr1 = result.find(user => user.email == email);
+                    console.log(arr1);
+                    res.render('forget', { alert: 'msg' })
+                } else {
+                    res.render('forget', { alert: 'psw' });
+                }
             } else {
-                throw err;
+                res.render('forget', { alert: 'err' })
             }
         })
-
     })
 })

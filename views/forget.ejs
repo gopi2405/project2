@@ -11,20 +11,39 @@
 <body style="text-align: center;">
     <br>
     <h1>forget</h1><br>
+    <small style="color: aliceblue;">
+        <%=alert%>
+    </small>
+    <small id="msg" style="color: green;">
+    </small>
     <form method="post" action="/forget">
         <div style="text-align: left; padding-left: 15cm;">
             <label for="email"> Enter email</label><br>
             <input type="text" id="email" name="email">
+            <small style="color: red;" id="err">
+            </small>
             <br>
             <label for="psw">Enter password</label><br>
             <input type="text" id="password" name="psw">
             <br>
             <label for="cpsw">Enter conform password </label><br>
             <input type="text" id="c_password" name="cpsw">
+            <small style="color: red;" id="err_psw">
+            </small>
             <br>
             <button type="submit">click</button>
         </div>
     </form>
 </body>
+<script>
+    let alert1 = '<%-alert%>'
+    if (alert1 == "msg") {
+        document.getElementById('msg').innerHTML = "password changed succfully";
+    } else if (alert1 == "err") {
+        document.getElementById('err').innerHTML = "email id does not exist..";
+    } else if (alert1 == "psw") {
+        document.getElementById('err_psw').innerHTML = "password doesn't match";
+    }
+</script>
 
 </html>
