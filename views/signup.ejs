@@ -8,10 +8,12 @@
     <title>Signup</title>
 </head>
 
-<body>
+<body style="text-align: center;">
     <h1>signup</h1>
+    <br>
     <form method="post" action="/sign_up">
-        <label for="name">Your UserId</label><br>
+
+        <label for="name" style="padding-right: 2.5cm;">Your UserId</label><br>
         <input type="text" id="name" name="name">
         <small id="err_n">
         </small>
@@ -19,7 +21,7 @@
             <%=msg%>
         </small>
         <br>
-        <label for="email">Your email</label><br>
+        <label for="email" style="padding-right: 2.8cm;">Your email</label><br>
         <input type="text" id="email" name="email">
         <small id="err_e">
         </small>
@@ -27,9 +29,9 @@
             <%=msg %>
         </small>
         <br>
-        <label for="Password">Your password</label><br>
+        <label for="Password" style="padding-right: 2cm;">Your password</label><br>
         <input type="password" id="psw" name="psw"> <br>
-        <label for="name">Please conform your password</label><br>
+        <label for="name" style="padding-left: 0.7cm;">Please conform your password</label><br>
         <input type="password" id="cpsw" name="cpsw">
         <small id="psw1">
         </small>
