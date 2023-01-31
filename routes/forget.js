@@ -9,7 +9,7 @@ module.exports = (() => {
                 if (psw == cpsw) {
                     var update = "update users set psw = ?, cpsw = ? where email = ?";
                     global.db_con.query(update, [psw, cpsw, email]);
-                    res.render('forget', { alert: 'msg' })
+                    res.render('login', { alert: 'msg' })
                 } else {
                     res.render('forget', { alert: 'psw' });
                 }

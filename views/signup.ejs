@@ -9,35 +9,25 @@
 </head>
 
 <body style="text-align: center;">
+    <small style="color: white; size: 0px;">
+        <%=msg %>
+    </small> <br>
     <h1>signup</h1>
     <br>
     <form method="post" action="/sign_up">
 
         <label for="name" style="padding-right: 2.5cm;">Your UserId</label><br>
         <input type="text" id="name" name="name">
-        <small id="err_n">
-        </small>
-        <small style="color: white; ">
-            <%=msg%>
-        </small>
-        <br>
+        <small id="err_n"></small><br>
         <label for="email" style="padding-right: 2.8cm;">Your email</label><br>
         <input type="text" id="email" name="email">
-        <small id="err_e">
-        </small>
-        <small style="color: white; size: 0px;">
-            <%=msg %>
-        </small>
-        <br>
+        <small id="err_e"></small> <br>
         <label for="Password" style="padding-right: 2cm;">Your password</label><br>
         <input type="password" id="psw" name="psw"> <br>
         <label for="name" style="padding-left: 0.7cm;">Please conform your password</label><br>
         <input type="password" id="cpsw" name="cpsw">
-        <small id="psw1">
-        </small>
-        <small style="color: white; size: 0px;">
-            <%=msg %>
-        </small> <br>
+        <small id="psw1"> </small>
+        <br>
         <button type="submit" id="submit" value="sbt">click</button>
     </form>
 </body>

@@ -12,4 +12,7 @@ module.exports = (() => {
   global.app.get('/forget', function (req, res) {
     res.render('forget', { alert: '' })
   })
+  global.app.get('/theater', function (req, res) {
+    res.render('theater', { alert: '' })
+  })
 })

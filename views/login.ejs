@@ -10,11 +10,12 @@
 </head>
 
 <body style="text-align: center;">
+    <small style="color: aliceblue;">
+        <%=alert%>
+    </small>
     <h1>loginform</h1><br>
     <form method="post" action="/login_api">
-        <p style="color: red;">
-            <%=alert%>
-        </p>
+        <p style="color: red;" id="msg"> </p>
         <div style="text-align: left; padding-left: 15cm;">
             <label for="name"> Name or Email</label> <br>
             <input type="text" id="fnam" name="name" placeholder="Email address or userid ">
@@ -28,5 +29,11 @@
     <P>for signup click <a href="signup"> Signup</a> link</P>
     <P>for forget click <a href="forget"> forget</a> link</P>
 </body>
+<script>
+    let alert1 = "<%-alert%>";
+    if (alert1 == "msg") {
+        document.getElementById("msg").innerHTML = "login failed"
+    }
+</script>
 
 </html>
