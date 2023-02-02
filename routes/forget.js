@@ -8,8 +8,10 @@ module.exports = (() => {
             if (typeof arr !== "undefined") {
                 if (psw == cpsw) {
                     var update = "update users set psw = ?, cpsw = ? where email = ?";
-                    global.db_con.query(update, [psw, cpsw, email]);
-                    res.render('login', { alert: 'msg' })
+                    global.db_con.query(update, [psw, cpsw, email], (result) => {
+                        console.log(result);
+                    });
+                    res.render('login', { alert: '' })
                 } else {
                     res.render('forget', { alert: 'psw' });
                 }

@@ -13,6 +13,6 @@ module.exports = (() => {
     res.render('forget', { alert: '' })
   })
   global.app.get('/theater', function (req, res) {
-    res.render('theater', { alert: '' })
+    res.render('theater', { alert1: '' })
   })
 })

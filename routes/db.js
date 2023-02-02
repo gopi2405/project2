@@ -43,9 +43,21 @@ module.exports = (() => {
     })
     global.db_con.query("SELECT * FROM users", function (err, result) {
         if (err) throw err;
-        console.log(result);
+        console.log("users table:", result);
     });
-
+    //tablename : theater
+    let theater_table = "CREATE TABLE theater (theaterid VARCHAR(255), class VARCHAR(255), seats VARCHAR(20))";
+    global.db_con.query(theater_table, (err) => {
+        if (err == null) {
+            console.log("theater Table created !");
+        } else {
+            console.log("tablename 'theater' already existed");
+        }
+    })
+    global.db_con.query("SELECT * FROM theater", function (err, result) {
+        if (err) throw err;
+        console.log("theater table:", result);
+    });
 });
 
 

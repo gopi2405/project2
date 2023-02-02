@@ -9,7 +9,7 @@ module.exports = (() => {
                 res.render('theater');
             } else if (user_email == user_arr.email && psw == user_arr.psw) {
                 console.log("login successful");
-                res.render('theater');
+                res.render('theater', { alert1: '' });
             }
             else {
                 res.render('login', { alert: 'msg' })
