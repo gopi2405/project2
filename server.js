@@ -18,6 +18,7 @@ global.app.use(express.static(path.join(__dirname, 'css')));
     require('./routes/Route')();
     require('./routes/login')();
     require('./routes/forget')();
+    require('./routes/theater')();
 
 })();
 

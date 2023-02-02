@@ -9,20 +9,42 @@
 </head>
 
 <body>
+    <small style="color: aliceblue;">
+        <%=alert1%>
+    </small>
     <br>
     <h1 style="text-align: center;">Theater</h1><br>
-    <form method="post" action="/theater">
+    <small id="s1" style="color: green; text-align: center;"></small>
+    <form method="post" action="/t1">
         <div style="padding-left: 1.5cm;">
             <label for="hallid"> Theater_id</label><br>
-            <input type="text" id="hallid" name="hallid" placeholder="enter hallid"><br>
+            <input type="text" id="hallid" name="hallid" placeholder="enter hallid">
+            <small id="m1" style="color: red;"></small>
+            <br>
             <label for="class"> Class type</label><br>
-            <input type="text" id="class" name="class" placeholder="enter class type"><br>
+            <input type="text" id="class" name="class" placeholder="enter class type">
+            <small id="m2" style="color: red;"></small>
+            <br>
             <label for="no.of_seats">No.of_seats</label><br>
-            <input type="text" id="seats" name="seats" placeholder="Enter no.of seats"><br>
+            <input type="number" id="seats" name="seats" placeholder="Enter no.of seats">
+            <small id="m3" style="color: red;"></small>
+            <br>
             <br>
             <button type="submit">Enter</button>
         </div>
     </form>
 </body>
+<script>
+    let theater = "<%-alert1%>";
+    if (theater == "s1") {
+        document.getElementById('s1').innerHTML = "theater details stored successfully";
+    } else if (theater == "e3") {
+        document.getElementById('m1').innerHTML = "please enter hall_id";
+    } else if (theater == "e2") {
+        document.getElementById('m2').innerHTML = "please enter class_type";
+    } else if (theater == "e1") {
+        document.getElementById('m3').innerHTML = "please enter no.of_seats";
+    }
+</script>
 
 </html>
