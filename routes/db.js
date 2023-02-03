@@ -46,6 +46,8 @@ module.exports = (() => {
         console.log("users table:", result);
     });
     //tablename : theater
+    // global.db_con.query("drop table theater");
+
     let theater_table = "CREATE TABLE theater (theaterid VARCHAR(255), class VARCHAR(255), seats VARCHAR(20))";
     global.db_con.query(theater_table, (err) => {
         if (err == null) {
@@ -57,6 +59,22 @@ module.exports = (() => {
     global.db_con.query("SELECT * FROM theater", function (err, result) {
         if (err) throw err;
         console.log("theater table:", result);
+    });
+
+    //tablename : movie
+    // global.db_con.query("drop table movies");
+    var sql_movies = "create table movies (movieid varchar(200),moviename varchar(200),language varchar(200), start_time varchar(200), end_time varchar(200) )";
+    global.db_con.query(sql_movies, (err, result) => {
+        if (err == null) {
+            console.log("theater Table created !");
+        } else {
+            console.log("tablename 'movies' already existed");
+        }
+    })
+
+    global.db_con.query("SELECT * FROM movies", function (err, result) {
+        if (err) throw err;
+        console.log("movies table:", result);
     });
 });
 

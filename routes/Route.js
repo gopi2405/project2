@@ -15,4 +15,8 @@ module.exports = (() => {
   global.app.get('/theater', function (req, res) {
     res.render('theater', { alert1: '' })
   })
+
+  global.app.get('/project', function (req, res) {
+    res.render('movie', { alert: '' })
+  })
 })

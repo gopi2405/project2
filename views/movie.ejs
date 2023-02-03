@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie</title>
+</head>
+
+<body>
+    <small style="color:aliceblue;">
+        <%=alert%>
+    </small><br>
+    <small id="a1" style="color: green;"></small>
+    <h1 style="text-align: center;">Movies</h1><br>
+    <br>
+    <form method="post" action="/movies" style="padding-left: 2cm;">
+        <lable for="movieid">movieid</lable><br>
+        <input type="text" id="movieid" name="movieid" placeholder="Enter movieid">
+        <small id="m1" style="color: red;"></small><br>
+        <label for="moviename">moviename</label><br>
+        <input type="text" id="moviename" name="moviename" placeholder="Enter moviename"><br>
+        <small id="m2" style="color: red;"></small>
+        <lable for="language">language</lable><br>
+        <input type="text" id="language" name="language">
+        <small id="m3" style="color:red;"></small><br>
+        <label for="start_time">start_time</label><br>
+        <input type="datetime-local" id="start_time" name="start_time">
+        <small id="m4" style="color:red;"></small><br>
+        <lable for="end_time">end_time</lable><br>
+        <input type="datetime-local" id="end_time" name="end_time"><br>
+        <small id="m5" style="color:red;"></small>
+        <button type="submit" id="submit" value="sbt">click</button>
+        <br>
+    </form>
+</body>
+<script>
+    let movies = "<%-alert%>";
+    if (movies == "a1") {
+        document.getElementById('a1').innerHTML = "movies added succesfully";
+    } else if (movies == "m1") {
+        document.getElementById('m5').innerHTML = "please enter end_time";
+    } else if (movies == "m2") {
+        document.getElementById('m4').innerHTML = "please enter start_time";
+    } else if (movies == "m3") {
+        document.getElementById('m3').innerHTML = "please enter language";
+    } else if (movies == "m4") {
+        document.getElementById('m2').innerHTML = "please enter movie name";
+    } else if (movies == "m5") {
+        document.getElementById('m1').innerHTML = "please enter movie id";
+    }
+
+</script>
+
+</html>

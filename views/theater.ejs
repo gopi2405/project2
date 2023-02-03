@@ -14,7 +14,11 @@
     </small>
     <br>
     <h1 style="text-align: center;">Theater</h1><br>
-    <small id="s1" style="color: green; text-align: center;"></small>
+    <div style="text-align: center;">
+        <small id="p1" style="color: green; text-align: center;"></small>
+        <small id="r1" style="color: red; text-align: center;"></small>
+    </div>
+
     <form method="post" action="/t1">
         <div style="padding-left: 1.5cm;">
             <label for="hallid"> Theater_id</label><br>
@@ -37,13 +41,15 @@
 <script>
     let theater = "<%-alert1%>";
     if (theater == "s1") {
-        document.getElementById('s1').innerHTML = "theater details stored successfully";
+        document.getElementById('p1').innerHTML = "theater details stored successfully";
     } else if (theater == "e3") {
         document.getElementById('m1').innerHTML = "please enter hall_id";
     } else if (theater == "e2") {
         document.getElementById('m2').innerHTML = "please enter class_type";
     } else if (theater == "e1") {
         document.getElementById('m3').innerHTML = "please enter no.of_seats";
+    } else if (theater == "r1") {
+        document.getElementById('r1').innerHTML = "theaterid and class type already stored";
     }
 </script>
 
