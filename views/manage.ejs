@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manager</title>
+</head>
+
+<body>
+    <small style="color:aliceblue;">
+        <%=alert%>
+    </small>
+    <br>
+    <h1 style="text-align: center;">Manager</h1><br>
+    <button type="button"><a href="theater">Theater</a></button>
+    <button type="button"><a href="project">movie</a></button>
+    <button type="button"><a href="ticket">ticket</a></button>
+    <br>
+    <small id="s1" style="color: green;"></small>
+    <small id="err" style="color: red;"></small>
+    <form method="post" action="/manager">
+        <!-- <label for="theaterid">theaterid</label>
+    <input type="number" id="theaterid" name="theaterid" placeholder="Enter theaterid Id">  -->
+        <div style="padding-left: 1cm;">
+            <label for="movieid">movieid</label><br>
+            <input type="text" id="movieid" name="movieid" placeholder="Enter movie Id">
+            <small id="e5"></small><br>
+            <label for="movie_name">movie_name</label><br>
+            <input type="text" id="movie_name" name="movie_name" placeholder="Enter movie name">
+            <small id="e4"></small><br>
+            <label for="hallid">theaterid</label><br>
+            <input type="text" id="hall_id" name="hall_id" placeholder="Enter hall Id">
+            <small id="e6"></small><br>
+            <label for="movieid">ticket_No</label><br>
+            <input type="text" id="tickid" name="tickid" placeholder="Enter ticket number">
+            <small id="e7"></small><br>
+            <label for="price">price</label><br>
+            <input type="text" id="price" name="price" placeholder="Enter price">
+            <small id="e3"></small><br>
+            <label for="start_time">start_time</label><br>
+            <input type="datetime-local" id="start_time" name="start_time">
+            <small id="e2"></small><br>
+            <label for="end_time">end_time</label><br>
+            <input type="datetime-local" id="end_time" name="end_time">
+            <small id="e1"></small><br>
+            <button type="submit">submit</button>
+        </div>
+    </form>
+
+</body>
+<script>
+    let manager = "<%-alert%>";
+    if (manager == 's1') {
+        document.getElementById('s1').innerHTML = "data added succesfully";
+    } else if (manager == 'e1') {
+        document.getElementById('e1').innerHTML = "Enter end time";
+    } else if (manager == 'e2') {
+        document.getElementById('e2').innerHTML = "Enter start time";
+    } else if (manager == 'e3') {
+        document.getElementById('e3').innerHTML = "Enter price";
+    } else if (manager == 'e4') {
+        document.getElementById('e4').innerHTML = "Enter movie name";
+    } else if (manager == 'e5') {
+        document.getElementById('e5').innerHTML = "Enter movie Id";
+    } else if (manager == 'e6') {
+        document.getElementById('e6').innerHTML = "Enter hall id ";
+    } else if (manager == 'e7') {
+        document.getElementById('e7').innerHTML = "Enter ticketno";
+    } else if (manager == 'ei1') {
+        document.getElementById('err').innerHTML = "enter corret movieid & movie_name ";
+    } else if (manager == 'ei2') {
+        document.getElementById('err').innerHTML = "Enter valid ticketno ";
+    } else if (manager == 'ei3') {
+        document.getElementById('err').innerHTML = "Enter valid theaterid";
+    }
+</script>
+
+</html>

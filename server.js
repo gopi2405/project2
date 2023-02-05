@@ -20,6 +20,8 @@ global.app.use(express.static(path.join(__dirname, 'css')));
     require('./routes/forget')();
     require('./routes/theater')();
     require('./routes/movie')();
+    require('./routes/booktickets')();
+    require('./routes/manage')();
 
 })();
 

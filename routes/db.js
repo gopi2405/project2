@@ -76,6 +76,34 @@ module.exports = (() => {
         if (err) throw err;
         console.log("movies table:", result);
     });
+
+    let ticket_table = "CREATE TABLE ticket (ticketno VARCHAR(255), showid VARCHAR(255), seatno VARCHAR(20))";
+    global.db_con.query(ticket_table, (err) => {
+        if (err == null) {
+            console.log("Ticket Table created !");
+        } else {
+            console.log("tablename 'Ticket' already existed");
+        }
+    })
+    global.db_con.query("SELECT * FROM Ticket", function (err, result) {
+        if (err) throw err;
+        console.log("Ticket table:", result);
+    });
+
+
+    // ("${movieid}","${movie_name}","${theaterid}","${ticketno}","${price}","${st}","${et}")
+    let manage_table = "CREATE TABLE manager (movieid VARCHAR(255), moviename VARCHAR(255), theaterid VARCHAR(200),ticketno VARCHAR(200), price VARCHAR(200), st VARCHAR(200), et VARCHAR(200))";
+    global.db_con.query(manage_table, (err) => {
+        if (err == null) {
+            console.log("manager Table created !");
+        } else {
+            console.log("tablename 'manager' already existed");
+        }
+    })
+    global.db_con.query("SELECT * FROM manager", function (err, result) {
+        if (err) throw err;
+        console.log("manager table:", result);
+    });
 });
 
 
