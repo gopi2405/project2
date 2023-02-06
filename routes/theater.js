@@ -3,9 +3,9 @@ module.exports = (() => {
         var theaterid = req.body.hallid;
         var class_type = req.body.class;
         var seats = req.body.seats;
-        if (theaterid != "" || theaterid != null) {
-            if (class_type != "" || class_type != null) {
-                if (seats != "" || seats != null) {
+        if (theaterid != "" && theaterid != null) {
+            if (class_type != "" && class_type != null) {
+                if (seats != "" && seats != null) {
                     global.db_con.query("select * from theater", (err, result) => {
                         if (result == null || result == "") {
                             var sql = `insert into theater (theaterid,class,seats) values ("${theaterid}","${class_type}","${seats}")`;

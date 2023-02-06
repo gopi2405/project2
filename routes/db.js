@@ -104,6 +104,29 @@ module.exports = (() => {
         if (err) throw err;
         console.log("manager table:", result);
     });
+
+    // manager login
+    let managersignup_table = "CREATE TABLE login_mg (userid VARCHAR(255), password VARCHAR(255))";
+    global.db_con.query(managersignup_table, (err) => {
+        if (err == null) {
+            console.log("managerlogin Table created !");
+        } else {
+            console.log("tablename 'managerlogin' already existed");
+        }
+    })
+
+
+    global.db_con.query("SELECT * FROM login_mg", function (err, result) {
+        if (result == "") {
+            var sql = "insert into login_mg values('manager', '123456')";
+            global.db_con.query(sql);
+        } else {
+            console.log('credentials already given')
+        }
+    });
+    global.db_con.query("SELECT * FROM login_mg", function (err, result) {
+        console.log('login:', result);
+    })
 });
 
 

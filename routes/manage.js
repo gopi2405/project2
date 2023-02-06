@@ -16,14 +16,14 @@ module.exports = (() => {
                         if (price != "") {
                             if (st != "") {
                                 if (et != "") {
-                                    global.db_con.query("select * from theater", (err, result) => {
-                                        let obj = result.find(user => user.theaterid == hallid);
+                                    global.db_con.query("select * from theater", (err, result1) => {
+                                        let obj = result1.find(user => user.theaterid == hallid);
                                         if (typeof obj !== "undefined") {
-                                            global.db_con.query("select * from Ticket", (err, result) => {
-                                                let obj1 = result.find(user => user.ticketno == ticketno);
+                                            global.db_con.query("select * from Ticket", (err, result2) => {
+                                                let obj1 = result2.find(user => user.ticketno == ticketno);
                                                 if (typeof obj1 !== "undefined") {
-                                                    global.db_con.query("select * from movies", (err, result) => {
-                                                        let obj2 = result.find(user => user.movieid == movieid);
+                                                    global.db_con.query("select * from movies", (err, result3) => {
+                                                        let obj2 = result3.find(user => user.movieid == movieid);
                                                         if (typeof obj2 !== "undefined") {
                                                             if (obj2.moviename == movie_name) {
                                                                 global.db_con.query("select * from manager", (err, result) => {
