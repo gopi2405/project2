@@ -13,6 +13,7 @@
         <%=alert%>
     </small><br>
     <small id="a1" style="color: green;"></small>
+    <small id="r1" style="color: red"></small>
     <h1 style="text-align: center;">Movies</h1><br>
     <br>
     <form method="post" action="/movies" style="padding-left: 2cm;">
@@ -49,6 +50,8 @@
         document.getElementById('m2').innerHTML = "please enter movie name";
     } else if (movies == "m5") {
         document.getElementById('m1').innerHTML = "please enter movie id";
+    } else if (movies == "r1") {
+        document.getElementById('r1').innerHTML = "the movie details already stored";
     }
 
 </script>

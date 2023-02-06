@@ -21,7 +21,22 @@ module.exports = (() => {
                             })
                         } else {
                             let user_arr = result.find(user => user.ticketno == ticketno);
-                            if (user_arr.seatno != seatno) {
+                            if (typeof user_arr !== "undefined") {
+                                if (user_arr.seatno == seatno) {
+                                    res.render('booktickets', { alert: 'r1' });
+                                } else {
+                                    var sql = `insert into Ticket values ("${ticketno}","${showid}","${seatno}")`;
+                                    global.db_con.query(sql, (err, result) => {
+                                        if (err == null) {
+                                            console.log(result);
+                                            res.render('booktickets', { alert: 's1' });
+                                        } else {
+                                            console.log(err.sqlMessage);
+                                            res.render('booktickets', { alert: 'ei' })
+                                        }
+                                    })
+                                }
+                            } else {
                                 var sql = `insert into Ticket values ("${ticketno}","${showid}","${seatno}")`;
                                 global.db_con.query(sql, (err, result) => {
                                     if (err == null) {
@@ -32,9 +47,8 @@ module.exports = (() => {
                                         res.render('booktickets', { alert: 'ei' })
                                     }
                                 })
-                            } else {
-                                res.render('booktickets', { alert1: 'r1' });
                             }
+
                         }
                     })
 

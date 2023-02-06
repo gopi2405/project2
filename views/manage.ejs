@@ -21,8 +21,6 @@
     <small id="s1" style="color: green;"></small>
     <small id="err" style="color: red;"></small>
     <form method="post" action="/manager">
-        <!-- <label for="theaterid">theaterid</label>
-    <input type="number" id="theaterid" name="theaterid" placeholder="Enter theaterid Id">  -->
         <div style="padding-left: 1cm;">
             <label for="movieid">movieid</label><br>
             <input type="text" id="movieid" name="movieid" placeholder="Enter movie Id">
@@ -69,11 +67,15 @@
     } else if (manager == 'e7') {
         document.getElementById('e7').innerHTML = "Enter ticketno";
     } else if (manager == 'ei1') {
-        document.getElementById('err').innerHTML = "enter corret movieid & movie_name ";
+        document.getElementById('err').innerHTML = "enter corret movieid ";
     } else if (manager == 'ei2') {
         document.getElementById('err').innerHTML = "Enter valid ticketno ";
     } else if (manager == 'ei3') {
         document.getElementById('err').innerHTML = "Enter valid theaterid";
+    } else if (manager == 't1') {
+        document.getElementById('err').innerHTML = "ticketno already exist";
+    } else if (manager == 'm1') {
+        document.getElementById('err').innerHTML = "Enter movieName related to movieid";
     }
 </script>
 

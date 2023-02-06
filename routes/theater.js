@@ -16,15 +16,24 @@ module.exports = (() => {
                             })
                         } else {
                             let user_arr = result.find(user => user.theaterid == theaterid);
-                            if (user_arr.class != class_type) {
+                            if (typeof user_arr !== "undefined") {
+                                if (user_arr.class == class_type) {
+                                    res.render('theater', { alert1: 'r1' });
+                                } else {
+                                    var sql = `insert into theater (theaterid,class,seats) values ("${theaterid}","${class_type}","${seats}")`;
+                                    global.db_con.query(sql, (err, result) => {
+                                        if (err) throw err
+                                        console.log(result);
+                                        res.render('theater', { alert1: 's1' });
+                                    });
+                                }
+                            } else {
                                 var sql = `insert into theater (theaterid,class,seats) values ("${theaterid}","${class_type}","${seats}")`;
                                 global.db_con.query(sql, (err, result) => {
                                     if (err) throw err
                                     console.log(result);
                                     res.render('theater', { alert1: 's1' });
                                 })
-                            } else {
-                                res.render('theater', { alert1: 'r1' });
                             }
                         }
                     })
