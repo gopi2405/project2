@@ -2,7 +2,8 @@ module.exports = (() => {
     global.app.post('/t1', (req, res) => {
         var theaterid = req.body.hallid;
         var class_type = req.body.class;
-        var seats = req.body.seats;
+        var seat = req.body.seats;
+        var seats = parseInt(seat);
         if (theaterid != "" && theaterid != null) {
             if (class_type != "" && class_type != null) {
                 if (seats != "" && seats != null) {

@@ -10,38 +10,59 @@
 
 <body>
     <h1>costmer</h1>
-    <%=movie.movieid%><br>
+    <samll style="color: white;">
+        <%=alert%>
+    </samll>
+    <small id="s1" style="color: green;"></small>
+    <small id="e1" style="color: red;"></small>
+    <br>
+    <form method="post" action="/costmer">
+        <label for="t_id">theaterid:</label>
+        <select id="t_id" name="t_id">
+        </select><br><br>
+        <label for="m_id">movieid: </label>
+        <select id="m_id" name="m_id">
+        </select><br><br>
+        <label for="m_name">movieName:</label>
+        <select id="m_name" name="m_name">
+        </select><br><br>
+        <label for="m_lang">language:</label>
+        <select id="m_lang" name="m_lang">
+        </select><br>
         <br>
-        <form method="post" action="/costmer">
-            <label for="t_id">theaterid:</label>
-            <select id="t_id" name="t_id">
-            </select><br>
-            <label for="m_id">movieid:</label>
-            <select id="m_id" name="m_id">
-            </select><br>
-            <label for="m_name">movieName:</label>
-            <select id="m_name" name="m_name">
-            </select><br>
-            <label for="m_lang">language:</label>
-            <select id="m_lang" name="m_lang">
-            </select><br>
-            <button type="submit">submit</button>
+        <br>
+        <br>
+        <h5> select either upperclass or lowerclass</h5>
 
-        </form>
-
+        <label for="seatno">upperclass:</label>
+        <select id="seatupno" name="seatupno">
+        </select><br>
+        <br>
+        <p>or</p>
+        <label for="seatno">lowerclass:</label>
+        <select id="seatlowno" name="seatlowno">
+        </select><br> <br>
+        <button type="submit">submit</button>
+    </form>
+    <p>click next button to proceed</p>
 </body>
 
 <script>
     var movi = '<%-JSON.stringify(movie)%>';
     var movie = JSON.parse(movi);
 
-    var theate = '<%-JSON.stringify(theater)%>';
-    var theater1 = JSON.parse(theate);
+    var theater = '<%-JSON.stringify(theater)%>';
+    var theater1 = JSON.parse(theater);
+
+    var seat = '<%-JSON.stringify(seat)%>';
+    var seats = JSON.parse(seat);
     // select ids
     var t_id = document.getElementById('t_id');
     var m_id = document.getElementById('m_id');
     var m_name = document.getElementById('m_name');
     var m_lang = document.getElementById('m_lang');
+    var seatupno = document.getElementById('seatupno');
+    var seatlowno = document.getElementById('seatlowno');
 
     for (var i = 0; i < movie.length; i++) {
         var opt = document.createElement('option');
@@ -63,9 +84,28 @@
         opt.innerHTML = theater1[i].theaterid;
         opt.value = theater1[i].theaterid;
         t_id.appendChild(opt);
+    }
+    for (var i = 0; i < seats.length; i++) {
+        var opt5 = document.createElement('option');
+        opt5.innerHTML = seats[i].upperclass;
+        opt5.value = seats[i].upperclass;
+        seatupno.appendChild(opt5);
 
+        var opt6 = document.createElement('option');
+        opt6.innerHTML = seats[i].upperclass;
+        opt6.value = seats[i].upperclass;
+        seatlowno.appendChild(opt6);
     }
 
+    var movie = JSON.parse(movi);
+    var alert1 = '<%-alert%>'
+    if (alert1 == 's1') {
+        document.getElementById('s1').innerHTML = "deatails are stored"
+    } else if (alert1 == 'e1') {
+        document.getElementById('e1').innerHTML = "seatno already seleted"
+    } else if (alert1 == 'e2') {
+        document.getElementById('e1').innerHTML = "seatno already seleted"
+    }
 </script>
 
 </html>

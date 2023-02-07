@@ -22,6 +22,7 @@ global.app.use(express.static(path.join(__dirname, 'css')));
     require('./routes/movie')();
     require('./routes/booktickets')();
     require('./routes/manage')();
+    require('./routes/costmer')();
 
 })();
 

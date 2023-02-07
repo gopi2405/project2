@@ -47,7 +47,7 @@ module.exports = (() => {
     });
     //tablename : theater
     // global.db_con.query("drop table theater");
-
+    // create Theater table
     let theater_table = "CREATE TABLE theater (theaterid VARCHAR(255), class VARCHAR(255), seats VARCHAR(20))";
     global.db_con.query(theater_table, (err) => {
         if (err == null) {
@@ -63,6 +63,7 @@ module.exports = (() => {
 
     //tablename : movie
     // global.db_con.query("drop table movies");
+    // create movies table
     var sql_movies = "create table movies (movieid varchar(200),moviename varchar(200),language varchar(200), start_time varchar(200), end_time varchar(200) )";
     global.db_con.query(sql_movies, (err, result) => {
         if (err == null) {
@@ -77,6 +78,7 @@ module.exports = (() => {
         console.log("movies table:", result);
     });
 
+    // create tickes tables
     let ticket_table = "CREATE TABLE ticket (ticketno VARCHAR(255), showid VARCHAR(255), seatno VARCHAR(20))";
     global.db_con.query(ticket_table, (err) => {
         if (err == null) {
@@ -105,7 +107,7 @@ module.exports = (() => {
         console.log("manager table:", result);
     });
 
-    // manager login
+    // create managing login deatails
     let managersignup_table = "CREATE TABLE login_mg (userid VARCHAR(255), password VARCHAR(255))";
     global.db_con.query(managersignup_table, (err) => {
         if (err == null) {
@@ -127,6 +129,81 @@ module.exports = (() => {
     global.db_con.query("SELECT * FROM login_mg", function (err, result) {
         console.log('login:', result);
     })
+
+
+    // create costmerup table
+    let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20))";
+    global.db_con.query(costmerup_table, (err) => {
+        if (err == null) {
+            console.log("costmer1 Table created !");
+        } else {
+            console.log("tablename 'costmer1' already existed");
+        }
+    });
+    global.db_con.query("SELECT * FROM costmerup", function (err, result) {
+        console.log('costmer1:', result);
+    })
+
+    // create costmerlow table
+    let costmerlow_table = "CREATE TABLE costmerlow (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255), lowerclass VARCHAR(20))";
+    global.db_con.query(costmerlow_table, (err) => {
+        if (err == null) {
+            console.log("costmer2 Table created !");
+        } else {
+            console.log("tablename 'costmer2' already existed");
+        }
+    });
+    global.db_con.query("SELECT * FROM costmerlow", function (err, result) {
+        console.log('costmer2:', result);
+    })
+
+
+
+    // global.db_con.query("drop table hall_seats");
+
+    let seatno_table = "CREATE TABLE hall_seats (upperclass VARCHAR(255), lowerclass VARCHAR(255))";
+    global.db_con.query(seatno_table, (err) => {
+        if (err == null) {
+            console.log("hall_seats Table created !");
+        } else {
+            console.log("tablename 'hall_seats' already existed");
+        }
+    });
+
+    global.db_con.query("SELECT * FROM hall_seats", function (err, result) {
+        if (result == "") {
+            for (var i = 1, j = 1; i <= 10, j <= 10; j++, i++) {
+                var upperclass = i;
+                var lowerclass = j;
+                var sql = `insert into hall_seats values("${upperclass}","${lowerclass}")`;
+                global.db_con.query(sql, (err, result) => {
+                    if (err) {
+                        console.log(err.sqlMessage);
+                    } else {
+                        console.log(result);
+                    }
+                })
+            }
+        } else {
+            console.log("data stored");
+        }
+    })
+    global.db_con.query("SELECT * FROM hall_seats", function (err, result) {
+        console.log('hall_seats:', result);
+    })
+
+    // let upper_table = "CREATE TABLE hallup_seats (seatno VAR)";
+    // global.db_con.query(upper_table, (err) => {
+    //     if (err == null) {
+    //         console.log("hallup_seats Table created !");
+    //     } else {
+    //         console.log("tablename 'hallup_seats' already existed");
+    //     }
+    // });
+    // global.db_con.query("SELECT * FROM hallup_seats", function (err, result) {
+    //     console.log('hallup_seats:', result);
+    // })
+    // global.db_con.query("drop table costmer");
 });
 
 
