@@ -35,16 +35,19 @@ module.exports = (() => {
                                                                             res.render('manage', { alert: 's1' });
                                                                         })
                                                                     } else {
-                                                                        let obj3 = result.find(user => user.ticketno == ticketno);
+                                                                        let obj3 = result.find(user => user.theaterid == hallid);
                                                                         if (typeof obj3 !== "undefined") {
-                                                                            res.render('manage', { alert: 't1' });
-                                                                        } else if (obj3.theaterid == hallid) {
-                                                                            var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${ticketno}","${price}","${st}","${et}")`;
-                                                                            global.db_con.query(sql, (err, result) => {
-                                                                                if (err) throw err
-                                                                                console.log(result);
-                                                                                res.render('manage', { alert: 's1' });
-                                                                            })
+                                                                            if (obj3.ticketno == ticketno) {
+                                                                                res.render('manage', { alert: 't1' });
+                                                                            } else {
+                                                                                var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${ticketno}","${price}","${st}","${et}")`;
+                                                                                global.db_con.query(sql, (err, result) => {
+                                                                                    if (err) throw err
+                                                                                    console.log(result);
+                                                                                    res.render('manage', { alert: 's1' });
+                                                                                })
+                                                                            }
+
                                                                         }
                                                                         else {
                                                                             var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${ticketno}","${price}","${st}","${et}")`;

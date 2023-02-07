@@ -85,7 +85,7 @@ module.exports = (() => {
             console.log("tablename 'Ticket' already existed");
         }
     })
-    global.db_con.query("SELECT * FROM Ticket", function (err, result) {
+    global.db_con.query("SELECT * FROM ticket", function (err, result) {
         if (err) throw err;
         console.log("Ticket table:", result);
     });

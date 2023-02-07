@@ -26,4 +26,7 @@ module.exports = (() => {
   global.app.get('/ticket', function (req, res) {
     res.render('booktickets', { alert: '' })
   })
+  global.app.get('/costmer', function (req, res) {
+    res.render('costmer', { alert: '' })
+  })
 })
