@@ -19,16 +19,27 @@
     <form method="post" action="/costmer">
         <label for="t_id">theaterid:</label>
         <select id="t_id" name="t_id">
-        </select><br><br>
+            <option value=""> </option>
+        </select>
+        <small id="t1" style="color: red;"></small>
+        <br><br>
         <label for="m_id">movieid: </label>
         <select id="m_id" name="m_id">
-        </select><br><br>
+            <option value=""> </option>
+        </select>
+        <small id="m1" style="color: red;"></small>
+        <br><br>
         <label for="m_name">movieName:</label>
         <select id="m_name" name="m_name">
-        </select><br><br>
+            <option value=""> </option>
+        </select>
+        <small id="mn1" style="color: red;"></small>
+        <br><br>
         <label for="m_lang">language:</label>
         <select id="m_lang" name="m_lang">
-        </select><br>
+            <option value=""> </option>
+        </select>
+        <small id="ml1" style="color: red;"></small><br>
         <br>
         <br>
         <br>
@@ -36,15 +47,20 @@
 
         <label for="seatno">upperclass:</label>
         <select id="seatupno" name="seatupno">
-        </select><br>
+            <option value=""> </option>
+        </select>
+        <small id="eup1" style="color: red;"></small><br>
         <br>
         <p>or</p>
         <label for="seatno">lowerclass:</label>
         <select id="seatlowno" name="seatlowno">
-        </select><br> <br>
+            <option value=""> </option>
+        </select>
+        <small id="elow1" style="color: red;"></small>
+        <br> <br>
         <button type="submit">submit</button>
     </form>
-    <p>click next button to proceed</p>
+    <p>click submit button to proceed</p>
 </body>
 
 <script>
@@ -101,11 +117,23 @@
     var alert1 = '<%-alert%>'
     if (alert1 == 's1') {
         document.getElementById('s1').innerHTML = "deatails are stored"
+    } else if (alert1 == 'uplow') {
+        document.getElementById('e1').innerHTML = "select either upperclass or lowercalss"
     } else if (alert1 == 'e1') {
-        document.getElementById('e1').innerHTML = "seatno already seleted"
+        document.getElementById('eup1').innerHTML = "seatno already seleted"
     } else if (alert1 == 'e2') {
-        document.getElementById('e1').innerHTML = "seatno already seleted"
-    }
+        document.getElementById('elow1').innerHTML = "seatno already seleted"
+    } else if (alert1 == 'uplow_er') {
+        document.getElementById('e1').innerHTML = "can not select both "
+    } else if (alert1 == 't1id') {
+        document.getElementById('t1').innerHTML = "select theaterid"
+    } else if (alert1 == 'm1id') {
+        document.getElementById('m1').innerHTML = "select movieid"
+    } else if (alert1 == 'mn1') {
+        document.getElementById('mn1').innerHTML = "select moviename"
+    } else if (alert1 == 'lang1') {
+        document.getElementById('ml1').innerHTML = "select language"
+    } 
 </script>
 
 </html>
