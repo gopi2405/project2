@@ -132,6 +132,9 @@ module.exports = (() => {
 
 
     // create costmerup table
+    // global.db_con.query("drop table costmerup");
+    // global.db_con.query("drop table costmerlow");
+
     let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20))";
     global.db_con.query(costmerup_table, (err) => {
         if (err == null) {
@@ -185,11 +188,8 @@ module.exports = (() => {
                 })
             }
         } else {
-            console.log("data stored");
+            console.log('hall_seats:', result);
         }
-    })
-    global.db_con.query("SELECT * FROM hall_seats", function (err, result) {
-        console.log('hall_seats:', result);
     })
 
     // let upper_table = "CREATE TABLE hallup_seats (seatno VAR)";
