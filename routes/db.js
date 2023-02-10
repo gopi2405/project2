@@ -79,6 +79,8 @@ module.exports = (() => {
     });
 
     // create tickes tables
+    // global.db_con.query("drop table ticket");
+
     let ticket_table = "CREATE TABLE ticket (ticketno VARCHAR(255), showid VARCHAR(255), seatno VARCHAR(20))";
     global.db_con.query(ticket_table, (err) => {
         if (err == null) {
