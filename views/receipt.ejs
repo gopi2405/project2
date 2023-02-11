@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+</head>
+
+<body>
+    <samll style="color: white;">
+        <%=alert%>
+            <%=movie%>
+                <%=theater%>
+                    <%=seat%>
+                        <%=name%>
+                            <%=u%>
+                                <%=l%>
+    </samll>
+    <label>costmer name:</label>
+    <p>
+        <%=name.uname%>
+    </p> <br>
+    <label>ticketno:</label>
+    <p>
+        <%=ticket.ticketno%>
+    </p> <br>
+
+    <label>movieid:</label>
+    <p>
+        <%=movie.movieid%>
+    </p> <br>
+    <label> movieName:</label>
+    <p>
+        <%= movie.moviename%>
+    </p><br>
+    <label>language:</label>
+    <p>
+        <%= movie.language %>
+    </p><br>
+    <label></label>
+    <p>
+        <%= %>
+    </p><br>
+    <label>theaterid</label>
+    <p>
+        <%= theater.theaterid %>
+    </p><br>
+    <label>seatno:</label>
+    <p id="no"></p><br>
+</body>
+<script>
+    let seat_type = '<%-seat%>';
+    let setnou = '<%-u%>';
+    let setnol = '<%-l%>';
+    if (seat_type == seatnou) {
+        document.getElementById('no').innerHTML = "upperclass:" + seatnou;
+    } else if (seat_type == seatnol) {
+        document.getElementById('no').innerHTML = "lowerclass:" + seatnol;
+    } 
+</script>
+
+</html>

@@ -137,7 +137,7 @@ module.exports = (() => {
     // global.db_con.query("drop table costmerup");
     // global.db_con.query("drop table costmerlow");
 
-    let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20))";
+    let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20),username VARCHAR(200))";
     global.db_con.query(costmerup_table, (err) => {
         if (err == null) {
             console.log("costmer1 Table created !");
@@ -150,7 +150,7 @@ module.exports = (() => {
     })
 
     // create costmerlow table
-    let costmerlow_table = "CREATE TABLE costmerlow (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255), lowerclass VARCHAR(20))";
+    let costmerlow_table = "CREATE TABLE costmerlow (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255), lowerclass VARCHAR(20),username VARCHAR(200))";
     global.db_con.query(costmerlow_table, (err) => {
         if (err == null) {
             console.log("costmer2 Table created !");

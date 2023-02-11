@@ -13,7 +13,6 @@
         <%=alert%>
     </small>
     <small id="s1" style="color: green;"></small>
-
     <small id="r1" style="color: red;"></small>
     <h1 style="text-align: center;">Booktickets</h1>
     <form method="post" action="/ticket">
@@ -36,8 +35,6 @@
         document.getElementById('seatno').innerHTML = "please enter seatno";
     } else if (ticket == "e2") {
         document.getElementById('showid').innerHTML = "please enter showid";
-    } else if (ticket == "e3") {
-        document.getElementById('r1').innerHTML = "please enter ticketno";
     } else if (ticket == "r1") {
         document.getElementById('r1').innerHTML = "seatno already existed";
     }

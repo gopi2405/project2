@@ -10,13 +10,20 @@
 
 <body>
     <h1>costmer</h1>
+    <!-- movie: obj1, theater: obj2, seat: obj4, alert: '', name: user_email, ticket: obj3 -->
     <samll style="color: white;">
         <%=alert%>
+            <%=movie%>
+                <%=theater%>
+                    <%=seat%>
+
     </samll>
     <small id="s1" style="color: green;"></small>
     <small id="e1" style="color: red;"></small>
     <br>
     <form method="post" action="/costmer">
+        <p>welome mr.<%=name.uname%>
+        </p>
         <label for="t_id">theaterid:</label>
         <select id="t_id" name="t_id">
             <option value=""> </option>
@@ -41,6 +48,14 @@
         </select>
         <small id="ml1" style="color: red;"></small><br>
         <br>
+        <label>show_type:</label>
+        <select id="show" name="show">
+            <option value=""></option>
+            <option value="morning">morning</option>
+            <option value="afternoon">afternoon </option>
+            <option value="firstshow">firstshow </option>
+            <option value="secondshow">secondshow </option>
+        </select>
         <br>
         <br>
         <h5> select either upperclass or lowerclass</h5>
@@ -58,7 +73,7 @@
         </select>
         <small id="elow1" style="color: red;"></small>
         <br> <br>
-        <button type="submit">submit</button>
+        <button type="submit" value="<%= name %>" name="name">submit</button>
     </form>
     <p>click submit button to proceed</p>
 </body>
@@ -113,11 +128,8 @@
         seatlowno.appendChild(opt6);
     }
 
-    var movie = JSON.parse(movi);
     var alert1 = '<%-alert%>'
-    if (alert1 == 's1') {
-        document.getElementById('s1').innerHTML = "deatails are stored"
-    } else if (alert1 == 'uplow') {
+    if (alert1 == 'uplow') {
         document.getElementById('e1').innerHTML = "select either upperclass or lowercalss"
     } else if (alert1 == 'e1') {
         document.getElementById('eup1').innerHTML = "seatno already seleted"
@@ -133,7 +145,10 @@
         document.getElementById('mn1').innerHTML = "select moviename"
     } else if (alert1 == 'lang1') {
         document.getElementById('ml1').innerHTML = "select language"
-    } 
+    } else if (alert1 == 'show') {
+        document.getElementById('ml1').innerHTML = "select show_type"
+    }
+
 </script>
 
 </html>

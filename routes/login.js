@@ -4,6 +4,7 @@ module.exports = (() => {
         var psw = req.body.Password;
         var user = "user";
         var manager = "manager";
+
         global.db_con.query("SELECT * FROM manager", function (err, result) {
             global.db_con.query("SELECT * FROM movies", function (err, result1) {
                 global.db_con.query("SELECT * FROM theater", function (err, result2) {
@@ -19,11 +20,11 @@ module.exports = (() => {
                                 if (typeof user_arr !== "undefined") {
                                     if (user_email == user_arr.uname && psw == user_arr.psw) {
                                         console.log("login successful");
-                                        res.render('costmer', { movie: obj1, theater: obj2, seat: obj4, alert: '' });
+                                        res.render('costmer', { movie: obj1, theater: obj2, seat: obj4, alert: '', name: user_arr, ticket: obj3 });
 
                                     } else if (user_email == user_arr.email && psw == user_arr.psw) {
                                         console.log("login successful");
-                                        res.render('costmer', { movie: obj1, theater: obj2, alert: '', seat: obj4 });
+                                        res.render('costmer', { movie: obj1, theater: obj2, alert: '', seat: obj4, name: user_arr, ticket: obj3 });
                                     } else {
                                         res.render('login', { alert: 'msg' })
                                     }

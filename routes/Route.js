@@ -27,6 +27,6 @@ module.exports = (() => {
     res.render('booktickets', { alert: '' })
   })
   global.app.get('/costmer', function (req, res) {
-    res.render('costmer', { alert: '' })
+    res.render('costmer', { alert: '', movie: obj1, theater: obj2, seat: obj4, name: obj5, ticket: obj3 })
   })
 })
