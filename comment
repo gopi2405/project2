@@ -85,4 +85,32 @@ result1.forEach(result => {
     }
 });
 //  using arr.find() to find needed object
-let user_arr = result.find(user => user.email == user_email); 
+let user_arr = result.find(user => user.email == user_email);
+// 
+
+
+// costmer table
+let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20),username VARCHAR(200),ticketno VARCHAR(20),show VARCHAR(20))";
+global.db_con.query(costmerup_table, (err) => {
+    if (err == null) {
+        console.log("costmer1 Table created !");
+    } else {
+        console.log("tablename 'costmer1' already existed");
+    }
+});
+global.db_con.query("SELECT * FROM costmerup", function (err, result) {
+    console.log('costmer1:', result);
+})
+
+// create costmerlow table
+let costmerlow_table = "CREATE TABLE costmerlow (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255), lowerclass VARCHAR(20),username VARCHAR(200),ticketno VARCHAR(20),show VARCHAR(20))";
+global.db_con.query(costmerlow_table, (err) => {
+    if (err == null) {
+        console.log("costmer2 Table created !");
+    } else {
+        console.log("tablename 'costmer2' already existed");
+    }
+});
+global.db_con.query("SELECT * FROM costmerlow", function (err, result) {
+    console.log('costmer2:', result);
+})

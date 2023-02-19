@@ -11,53 +11,54 @@
 <body>
     <samll style="color: white;">
         <%=alert%>
-            <%=movie%>
-                <%=theater%>
-                    <%=seat%>
-                        <%=name%>
-                            <%=u%>
-                                <%=l%>
+            <%=costmer%>
+                <%=user%>
     </samll>
-    <label>costmer name:</label>
-    <p>
-        <%=name.uname%>
-    </p> <br>
-    <label>ticketno:</label>
-    <p>
-        <%=ticket.ticketno%>
-    </p> <br>
+    <label>costmer name:<p>
+            <%=user.username%>
+        </p></label>
+    <br>
+    <label>ticketno: <p>
+            <%=user.ticketno%>
+        </p></label>
+    <br>
 
-    <label>movieid:</label>
-    <p>
-        <%=movie.movieid%>
-    </p> <br>
-    <label> movieName:</label>
-    <p>
-        <%= movie.moviename%>
-    </p><br>
-    <label>language:</label>
-    <p>
-        <%= movie.language %>
-    </p><br>
-    <label></label>
+    <label>movieid: <p>
+            <%=costmer.movieid%>
+        </p></label>
+    <br>
+    <label> movieName: <p>
+            <%= costmer.moviename%>
+        </p></label>
+    <br>
+    <label>language: <p>
+            <%= costmer.language %>
+        </p></label>
+    <br>
+    <!-- <label></label>
     <p>
         <%= %>
-    </p><br>
-    <label>theaterid</label>
-    <p>
-        <%= theater.theaterid %>
-    </p><br>
-    <label>seatno:</label>
-    <p id="no"></p><br>
+    </p><br> -->
+    <label>theaterid: <p>
+            <%= costmer.theaterid %>
+        </p></label>
+    <br>
+    <label>show: <p>
+            <%= user.showid%>
+        </p></label>
+    <br>
+
+    <label>seatno: <p id="no"></p></label>
+
 </body>
 <script>
-    let seat_type = '<%-seat%>';
-    let setnou = '<%-u%>';
-    let setnol = '<%-l%>';
-    if (seat_type == seatnou) {
-        document.getElementById('no').innerHTML = "upperclass:" + seatnou;
-    } else if (seat_type == seatnol) {
-        document.getElementById('no').innerHTML = "lowerclass:" + seatnol;
+    let upper = '<%-costmer.upperclass%>';
+    let lower = '<%-costmer.lowerclass%>';
+    let seatno = '<%-user.seatno%>';
+    if (upper == seatno) {
+        document.getElementById('no').innerHTML = "upperclass:" + seatno;
+    } else if (lower == seatno) {
+        document.getElementById('no').innerHTML = "lowerclass:" + seatno;
     } 
 </script>
 

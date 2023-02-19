@@ -137,7 +137,7 @@ module.exports = (() => {
     // global.db_con.query("drop table costmerup");
     // global.db_con.query("drop table costmerlow");
 
-    let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20),username VARCHAR(200))";
+    let costmerup_table = "CREATE TABLE costmerup (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255),upperclass VARCHAR(20))";
     global.db_con.query(costmerup_table, (err) => {
         if (err == null) {
             console.log("costmer1 Table created !");
@@ -150,7 +150,7 @@ module.exports = (() => {
     })
 
     // create costmerlow table
-    let costmerlow_table = "CREATE TABLE costmerlow (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255), lowerclass VARCHAR(20),username VARCHAR(200))";
+    let costmerlow_table = "CREATE TABLE costmerlow (theaterid VARCHAR(255), movieid VARCHAR(255), moviename VARCHAR(255), language VARCHAR(255), lowerclass VARCHAR(20))";
     global.db_con.query(costmerlow_table, (err) => {
         if (err == null) {
             console.log("costmer2 Table created !");
@@ -194,6 +194,22 @@ module.exports = (() => {
         }
     })
 
+
+    // user data
+
+    let cuser_table = "CREATE TABLE userdata1 (ticketno VARCHAR(255), showid VARCHAR(255), username VARCHAR(255), seatno VARCHAR(20))";
+    global.db_con.query(cuser_table, (err) => {
+        if (err == null) {
+            console.log("userdata Table created !");
+        } else {
+            console.log("tablename 'userdata' already existed");
+        }
+    });
+    global.db_con.query("SELECT * FROM userdata1", function (err, result) {
+        console.log('userdata:', result);
+    })
+
+    // ticketno,showid,username,seatno
     // let upper_table = "CREATE TABLE hallup_seats (seatno VAR)";
     // global.db_con.query(upper_table, (err) => {
     //     if (err == null) {
