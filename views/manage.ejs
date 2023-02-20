@@ -11,29 +11,44 @@
 <body>
     <small style="color:aliceblue;">
         <%=alert%>
+            <%=movie%>
+                <%=theater%>
     </small>
+    <!-- movie: obj1, theater: obj2, seat: obj4 -->
     <br>
     <h1 style="text-align: center;">Manager</h1><br>
     <button type="button"><a href="theater">Theater</a></button>
     <button type="button"><a href="project">movie</a></button>
-    <button type="button"><a href="ticket">ticket</a></button>
     <br>
     <small id="s1" style="color: green;"></small>
     <small id="err" style="color: red;"></small>
     <form method="post" action="/manager">
         <div style="padding-left: 1cm;">
-            <label for="movieid">movieid</label><br>
-            <input type="text" id="movieid" name="movieid" placeholder="Enter movie Id">
-            <small id="e5"></small><br>
-            <label for="movie_name">movie_name</label><br>
-            <input type="text" id="movie_name" name="movie_name" placeholder="Enter movie name">
-            <small id="e4"></small><br>
-            <label for="hallid">theaterid</label><br>
-            <input type="text" id="hall_id" name="hall_id" placeholder="Enter hall Id">
-            <small id="e6"></small><br>
-            <label for="movieid">ticket_No</label><br>
-            <input type="text" id="tickid" name="tickid" placeholder="Enter ticket number">
-            <small id="e7"></small><br>
+
+            <label for="movieid">movieid: </label>
+            <select id="movieid" name="movieid" placeholder="select movie Id">
+                <option value=""> </option>
+            </select>
+            <small id="e5" style="color: red;"></small>
+            <br>
+            <label for="m_name">movieName:</label>
+            <select id="movie_name" name="movie_name" placeholder="select movie name">
+                <option value=""> </option>
+            </select>
+            <small id="e4" style="color: red;"></small>
+            <br>
+            <label for="t_id">theaterid:</label>
+            <select id="hall_id" name="hall_id" placeholder="select hall Id">
+                <option value=""> </option>
+            </select>
+            <small id="e6" style="color: red;"></small>
+            <br>
+            <label for="class">class_type</label>
+            <select id="class" name="class">
+                <option value=""></option>
+                <option value="upperclass">upperclass</option>
+                <option value="lowerclass"> lowerclass</option>
+            </select><small id="c1"></small><br>
             <label for="price">price</label><br>
             <input type="text" id="price" name="price" placeholder="Enter price">
             <small id="e3"></small><br>
@@ -49,6 +64,38 @@
 
 </body>
 <script>
+
+    var movi = '<%-JSON.stringify(movie)%>';
+    var movie = JSON.parse(movi);
+
+    var theater = '<%-JSON.stringify(theater)%>';
+    var theater1 = JSON.parse(theater);
+
+    var t_id = document.getElementById('hall_id');
+    var m_id = document.getElementById('movieid');
+    var m_name = document.getElementById('movie_name');
+
+    for (var i = 0; i < movie.length; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = movie[i].movieid;
+        opt.value = movie[i].movieid;
+        m_id.appendChild(opt);
+        var opt1 = document.createElement('option');
+        opt1.innerHTML = movie[i].moviename;
+        opt1.value = movie[i].moviename;
+        m_name.appendChild(opt1);
+    }
+
+    for (var i = 0; i < theater1.length; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = theater1[i].theaterid;
+        opt.value = theater1[i].theaterid;
+        t_id.appendChild(opt);
+    }
+
+
+
+
     let manager = "<%-alert%>";
     if (manager == 's1') {
         document.getElementById('s1').innerHTML = "data added succesfully";
@@ -59,23 +106,17 @@
     } else if (manager == 'e3') {
         document.getElementById('e3').innerHTML = "Enter price";
     } else if (manager == 'e4') {
-        document.getElementById('e4').innerHTML = "Enter movie name";
+        document.getElementById('e4').innerHTML = "select movie name";
     } else if (manager == 'e5') {
-        document.getElementById('e5').innerHTML = "Enter movie Id";
+        document.getElementById('e5').innerHTML = "select movie Id";
     } else if (manager == 'e6') {
-        document.getElementById('e6').innerHTML = "Enter hall id ";
-    } else if (manager == 'e7') {
-        document.getElementById('e7').innerHTML = "Enter ticketno";
-    } else if (manager == 'ei1') {
-        document.getElementById('err').innerHTML = "enter corret movieid ";
-    } else if (manager == 'ei2') {
-        document.getElementById('err').innerHTML = "Enter valid ticketno ";
-    } else if (manager == 'ei3') {
-        document.getElementById('err').innerHTML = "Enter valid theaterid";
-    } else if (manager == 't1') {
-        document.getElementById('err').innerHTML = "ticketno already exist";
+        document.getElementById('e6').innerHTML = "select hall id ";
+    } else if (manager == 'cl1') {
+        document.getElementById('err').innerHTML = " classtype for pricing already selected";
     } else if (manager == 'm1') {
-        document.getElementById('err').innerHTML = "Enter movieName related to movieid";
+        document.getElementById('err').innerHTML = "slecet movieName related to movieid";
+    } else if (manager == 'c1') {
+        document.getElementById('c1').innerHTML = "must select classtype";
     }
 </script>
 

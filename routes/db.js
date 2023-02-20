@@ -96,7 +96,9 @@ module.exports = (() => {
 
 
     // ("${movieid}","${movie_name}","${theaterid}","${ticketno}","${price}","${st}","${et}")
-    let manage_table = "CREATE TABLE manager (movieid VARCHAR(255), moviename VARCHAR(255), theaterid VARCHAR(200),ticketno VARCHAR(200), price VARCHAR(200), st VARCHAR(200), et VARCHAR(200))";
+    // global.db_con.query("drop table manager");
+
+    let manage_table = "CREATE TABLE manager (movieid VARCHAR(255), moviename VARCHAR(255), theaterid VARCHAR(200), classtype VARCHAR(200), price VARCHAR(200), st VARCHAR(200), et VARCHAR(200))";
     global.db_con.query(manage_table, (err) => {
         if (err == null) {
             console.log("manager Table created !");
@@ -202,7 +204,7 @@ module.exports = (() => {
         if (err == null) {
             console.log("userdata Table created !");
         } else {
-            console.log("tablename 'userdata' already existed");
+            console.log("tablename 'userdata1' already existed");
         }
     });
     global.db_con.query("SELECT * FROM userdata1", function (err, result) {

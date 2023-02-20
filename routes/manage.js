@@ -3,99 +3,89 @@ module.exports = (() => {
         var movieid = req.body.movieid;
         var movie_name = req.body.movie_name;
         var hallid = req.body.hall_id;
-        var ticketno = req.body.tickid;
+        var class_type = req.body.class;
         var price = req.body.price;
         var start_time = req.body.start_time;
         var end_time = req.body.end_time;
         var st = new Date(start_time);
         var et = new Date(end_time);
-        if (movieid != "") {
-            if (movie_name != "") {
-                if (hallid != "") {
-                    if (ticketno != "") {
-                        if (price != "") {
-                            if (st != "") {
-                                if (et != "") {
-                                    global.db_con.query("select * from theater", (err, result1) => {
-                                        let obj = result1.find(user => user.theaterid == hallid);
-                                        if (typeof obj !== "undefined") {
-                                            global.db_con.query("select * from Ticket", (err, result2) => {
-                                                let obj1 = result2.find(user => user.ticketno == ticketno);
-                                                if (typeof obj1 !== "undefined") {
-                                                    global.db_con.query("select * from movies", (err, result3) => {
-                                                        let obj2 = result3.find(user => user.movieid == movieid);
-                                                        if (typeof obj2 !== "undefined") {
-                                                            if (obj2.moviename == movie_name) {
-                                                                global.db_con.query("select * from manager", (err, result) => {
-                                                                    if (result == null || result == "") {
-                                                                        var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${ticketno}","${price}","${st}","${et}")`;
-                                                                        global.db_con.query(sql, (err, result) => {
-                                                                            if (err) throw err
-                                                                            console.log(result);
-                                                                            res.render('manage', { alert: 's1' });
-                                                                        })
-                                                                    } else {
-                                                                        let obj3 = result.find(user => user.theaterid == hallid);
-                                                                        if (typeof obj3 !== "undefined") {
-                                                                            if (obj3.ticketno == ticketno) {
-                                                                                res.render('manage', { alert: 't1' });
-                                                                            } else {
-                                                                                var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${ticketno}","${price}","${st}","${et}")`;
-                                                                                global.db_con.query(sql, (err, result) => {
-                                                                                    if (err) throw err
-                                                                                    console.log(result);
-                                                                                    res.render('manage', { alert: 's1' });
-                                                                                })
-                                                                            }
-
-                                                                        }
-                                                                        else {
-                                                                            var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${ticketno}","${price}","${st}","${et}")`;
-                                                                            global.db_con.query(sql, (err, result) => {
-                                                                                if (err) throw err
-                                                                                console.log(result);
-                                                                                res.render('manage', { alert: 's1' });
-                                                                            })
-                                                                        }
-                                                                    }
-                                                                })
-
-                                                            } else {
-                                                                res.render('manage', { alert: 'm1' });
-                                                            }
+        global.db_con.query("select * from theater", (err, result1) => {
+            let obj = result1.filter(user => user);
+            global.db_con.query("select * from movies", (err, result3) => {
+                let obj2 = result3.filter(user => user);
+                if (movieid != "") {
+                    if (movie_name != "") {
+                        if (hallid != "") {
+                            if (class_type != "") {
+                                if (price != "") {
+                                    if (st != "") {
+                                        if (et != "") {
+                                            var obj3 = obj2.find(user => user.movieid == movieid)
+                                            if (typeof obj3 !== "undefined") {
+                                                if (obj3.moviename == movie_name) {
+                                                    global.db_con.query("select * from manager", (err, result) => {
+                                                        if (result == null || result == "") {
+                                                            var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${class_type}","${price}","${st}","${et}")`;
+                                                            global.db_con.query(sql, (err, result) => {
+                                                                if (err) throw err
+                                                                console.log(result);
+                                                                res.render('manage', { alert: 's1', movie: obj2, theater: obj });
+                                                            })
                                                         } else {
-                                                            res.render('manage', { alert: 'ei1' });
-                                                        }
+                                                            let obj3 = result.find(user => user.theaterid == hallid);
+                                                            let movie = result.find(user => user.movieid == movieid);
+                                                            if (typeof obj3 !== "undefined" && typeof movie !== "undefined") {
+                                                                if (obj3.classtype == class_type) {
+                                                                    res.render('manage', { alert: 'cl1', movie: obj2, theater: obj });
+                                                                } else {
+                                                                    var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${class_type}","${price}","${st}","${et}")`;
+                                                                    global.db_con.query(sql, (err, result) => {
+                                                                        if (err) throw err
+                                                                        console.log(result);
+                                                                        res.render('manage', { alert: 's1', movie: obj2, theater: obj });
+                                                                    })
+                                                                }
 
-                                                    });
+                                                            }
+                                                            else {
+                                                                var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${class_type}","${price}","${st}","${et}")`;
+                                                                global.db_con.query(sql, (err, result) => {
+                                                                    if (err) throw err
+                                                                    console.log(result);
+                                                                    res.render('manage', { alert: 's1', movie: obj2, theater: obj });
+                                                                })
+                                                            }
+                                                        }
+                                                    })
+
                                                 } else {
-                                                    res.render('manage', { alert: 'ei2' });
+                                                    res.render('manage', { alert: 'm1', movie: obj2, theater: obj });
                                                 }
-                                            });
+                                            }
+
+
                                         } else {
-                                            res.render('manage', { alert: 'ei3' });
+                                            res.render('manage', { movie: obj2, theater: obj, alert: 'e1' });
                                         }
-                                    })
+                                    } else {
+                                        res.render('manage', { movie: obj2, theater: obj, alert: 'e2' });
+                                    }
                                 } else {
-                                    res.render('manage', { alert: 'e1' });
+                                    res.render('manage', { movie: obj2, theater: obj, alert: 'e3' });
                                 }
                             } else {
-                                res.render('manage', { alert: 'e2' });
+                                res.render('manage', { movie: obj2, theater: obj, alert: 'c1' });
                             }
                         } else {
-                            res.render('manage', { alert: 'e3' });
+                            res.render('manage', { movie: obj2, theater: obj, alert: 'e6' });
                         }
                     } else {
-                        res.render('manage', { alert: 'e7' });
+                        res.render('manage', { movie: obj2, theater: obj, alert: 'e4' });
                     }
                 } else {
-                    res.render('manage', { alert: 'e6' });
+                    res.render('manage', { movie: obj2, theater: obj, alert: 'e5' });
                 }
-            } else {
-                res.render('manage', { alert: 'e4' });
-            }
-        } else {
-            res.render('manage', { alert: 'e5' });
-        }
+            })
+        })
     })
 })
