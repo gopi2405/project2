@@ -13,7 +13,7 @@
         <%=alert%>
             <%=costmer%>
                 <%=user%>
-    </samll>
+    </samll><br>
     <label>costmer name:<p>
             <%=user.username%>
         </p></label>
@@ -48,8 +48,12 @@
         </p></label>
     <br>
 
-    <label>seatno: <p id="no"></p></label>
+    <label>seatno: <p id="no"></p></label><br>
 
+    <label>price: <p>
+            <%= user.price%>
+        </p></label>
+    <br>
 </body>
 <script>
     let upper = '<%-costmer.upperclass%>';

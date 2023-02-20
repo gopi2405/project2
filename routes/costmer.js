@@ -13,7 +13,7 @@ module.exports = (() => {
                 global.db_con.query("SELECT * FROM theater", function (err, result2) {
                     // global.db_con.query("SELECT * FROM ticket", function (err, result3) {
                     global.db_con.query("SELECT * FROM hall_seats", function (err, result4) {
-                        let obj = result.filter(user => user);
+                        let obj = result.filter(user => user.theaterid == theaterid);
                         let obj1 = result1.filter(user => user.movieid == movieid);
                         let obj2 = result2.filter(user => user.theaterid == theaterid);
                         // let obj3 = result3.filter(user => user);
@@ -33,12 +33,14 @@ module.exports = (() => {
                                                         if (upperclass == "" && lowerclass == "") {
                                                             res.render('costmer', { alert: 'uplow', movie: obj1, theater: obj2, seat: obj4, name: user });
                                                         } else if (lowerclass == "") {
+                                                            var pricelower = obj.find(lower => lower.classtype == "upperclass")
+                                                            var price = pricelower.price;
                                                             if (result5 == "") {
                                                                 var t_num = "11";
                                                                 var ticketno = "23" + t_num;
                                                                 // ticketno, showid, username, seatno
                                                                 var sql = `insert into costmerup values ("${theaterid}","${movieid}","${moviename}","${language}","${upperclass}")`;
-                                                                var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${upperclass}")`;
+                                                                var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${upperclass}","${price}")`;
                                                                 global.db_con.query(usersql, (err, userresult) => {
                                                                     if (err) throw err.sqlMessage;
                                                                     console.log(userresult);
@@ -51,6 +53,7 @@ module.exports = (() => {
                                                                     global.db_con.query("SELECT * FROM userdata1", function (err, uresult) {
                                                                         let up1 = ucresult.find(user => user.upperclass == upperclass);
                                                                         let user1 = uresult.find(user => user.seatno == upperclass);
+
                                                                         res.render('receipt', { alert: 's1', costmer: up1, user: user1 });
                                                                     })
                                                                 })
@@ -62,7 +65,7 @@ module.exports = (() => {
                                                                     var lastelement1 = lastelement.map(({ ticketno }) => ticketno)
                                                                     ticketno = Number(lastelement1) + 1;
                                                                     var sql = `insert into costmerup values ("${theaterid}","${movieid}","${moviename}","${language}","${upperclass}")`;
-                                                                    var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${upperclass}")`;
+                                                                    var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${upperclass}","${price}")`;
                                                                     global.db_con.query(sql, (err, upresult) => {
                                                                         if (err) throw err.sqlMessage;
                                                                         console.log(upresult);
@@ -81,12 +84,14 @@ module.exports = (() => {
                                                                 }
                                                             }
                                                         } else if (upperclass == "") {
+                                                            var pricelower = obj.find(lower => lower.classtype == "lowerclass");
+                                                            var price = pricelower.price;
                                                             if (result6 == "") {
                                                                 var t_num = '11';
                                                                 var ticketno = "23" + t_num;
 
                                                                 var sql = `insert into costmerlow values ("${theaterid}","${movieid}","${moviename}","${language}","${lowerclass}")`;
-                                                                var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${lowerclass}")`;
+                                                                var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${lowerclass}","${price}")`;
                                                                 global.db_con.query(usersql, (err, userresult) => {
                                                                     if (err) throw err.sqlMessage;
                                                                     console.log(userresult);
@@ -112,7 +117,7 @@ module.exports = (() => {
                                                                     var lastelement1 = lastelement.map(({ ticketno }) => ticketno)
                                                                     ticketno = Number(lastelement1) + 1;
                                                                     var sql = `insert into costmerlow values ("${theaterid}","${movieid}","${moviename}","${language}","${lowerclass}")`;
-                                                                    var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${lowerclass}")`;
+                                                                    var usersql = `insert into userdata1 values ("${ticketno}","${show}","${user}","${lowerclass}","${price}")`;
                                                                     global.db_con.query(sql, (err, result) => {
                                                                         if (err) throw err.sqlMessage;
                                                                         console.log(result);

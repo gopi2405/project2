@@ -198,8 +198,9 @@ module.exports = (() => {
 
 
     // user data
+    // global.db_con.query("drop table userdata1");
 
-    let cuser_table = "CREATE TABLE userdata1 (ticketno VARCHAR(255), showid VARCHAR(255), username VARCHAR(255), seatno VARCHAR(20))";
+    let cuser_table = "CREATE TABLE userdata1 (ticketno VARCHAR(255), showid VARCHAR(255), username VARCHAR(255), seatno VARCHAR(20), price VARCHAR(20))";
     global.db_con.query(cuser_table, (err) => {
         if (err == null) {
             console.log("userdata Table created !");
