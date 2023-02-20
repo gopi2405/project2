@@ -35,7 +35,7 @@ module.exports = (() => {
                                                             let obj3 = result.find(user => user.theaterid == hallid);
                                                             let movie = result.find(user => user.movieid == movieid);
                                                             if (typeof obj3 !== "undefined" && typeof movie !== "undefined") {
-                                                                if (obj3.classtype == class_type) {
+                                                                if (obj3.classtype == class_type && obj3.price == price) {
                                                                     res.render('manage', { alert: 'cl1', movie: obj2, theater: obj });
                                                                 } else {
                                                                     var sql = `insert into manager values("${movieid}","${movie_name}","${hallid}","${class_type}","${price}","${st}","${et}")`;
